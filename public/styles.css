@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #0e4da4;
+}
+
+.nav-bar {
+  max-width: 575px;
+  height: 56px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  margin: 0;
+}
+
+.nav-title a {
+  text-decoration: none;
+  color: white;
+}
+
+.container,
+.header,
+.footer-container {
+  max-width: 575px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
