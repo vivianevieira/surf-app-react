@@ -1,4 +1,5 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -17,8 +18,6 @@ header {
 .nav-bar {
   max-width: 575px;
   height: 56px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   display: flex;
   align-items: center;
 }
@@ -36,8 +35,7 @@ header {
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   background-color: #f0f0f0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -52,11 +50,10 @@ header {
 
 .bottom-nav-tabs {
   color: #979797;
-  font-size: 10pt;
 }
 
 .container,
-.header,
+.nav-bar,
 .bottom-nav-container {
   max-width: 575px;
   margin: 0 auto;
