@@ -48,8 +48,13 @@ header {
   align-items: center;
 }
 
-.bottom-nav-tabs {
+.bottom-nav-links {
   color: #979797;
+  text-decoration: none;
+}
+
+.bottom-nav-links-active {
+  color: #0e4da4;
 }
 
 .container,

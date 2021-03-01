@@ -1,13 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faHome, faUserCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const tabs = [{
-  // route: "/home",
+  route: "/",
   icon: faHome,
   label: "Home"
 },{
-  // route: "/login",
+  route: "/favorites",
   icon: faHeart,
   label: "Favorites"
 }]
@@ -17,10 +18,12 @@ export default function Footer() {
     <div className="bottom-nav">
       <div className="bottom-nav-container">
         {tabs.map((tab, index) => (
-        <div className="bottom-nav-tabs" key={`tab-${index}`}>
-          <FontAwesomeIcon size="lg" icon={tab.icon} />
-          <div>{tab.label}</div>
-        </div>
+          <NavLink to={tab.route} exact={true} className="bottom-nav-links" activeClassName="bottom-nav-links-active" key={`tab-${index}`}>
+            <div>
+              <FontAwesomeIcon size="lg" icon={tab.icon} />
+              <div>{tab.label}</div>
+            </div>
+          </NavLink>
         ))}
       </div>
     </div>
