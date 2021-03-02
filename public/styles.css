@@ -1,13 +1,13 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
-body {
+/* body {
   margin: 0;
   font-family: 'Inter', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+} */
 
 header {
   border-top-left-radius: 10px;

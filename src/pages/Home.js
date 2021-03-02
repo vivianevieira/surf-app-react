@@ -1,7 +1,11 @@
 import React from 'react';
+import LocationSearch from '../components/LocationSearch';
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <>
+      <LocationSearch />
+      <div>Home</div>
+    </>
   )
 };
