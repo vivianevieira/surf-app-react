@@ -7,3 +7,7 @@
 body, input, button {
   font-family: 'Inter', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+button {
+  cursor: pointer;
+}

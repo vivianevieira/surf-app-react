@@ -19,3 +19,20 @@
   font-family: 'Inter', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #bdbdbd;
 }
+
+.locationSearchBtn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.locationSearchBtn > button {
+  background-color: #0e4da4;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: none;
+}
+
+.locationSearchBtnMargin {
+  margin-right: 0.5rem;
+}
