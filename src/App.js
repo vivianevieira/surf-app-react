@@ -6,12 +6,14 @@ import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import SurfCheck from './pages/SurfCheck';
 import { LocSearchProvider } from './contexts/LocSearchContext';
+import { SurfDataProvider } from './contexts/SurfDataContext';
 
 import styles from '../src/styles/App.module.css';
 
 function App() {
   return (
     <>
+    <SurfDataProvider>
       <BrowserRouter>
         <Header />
         <LocSearchProvider>
@@ -31,6 +33,7 @@ function App() {
         </LocSearchProvider>
         <BottomNav />
      </BrowserRouter>
+     </SurfDataProvider>
     </>
   );
 }
