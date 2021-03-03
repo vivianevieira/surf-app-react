@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
+import SurfCheck from './pages/SurfCheck';
 import { LocSearchProvider } from './contexts/LocSearchContext';
 
 import styles from '../src/styles/App.module.css';
@@ -18,6 +19,9 @@ function App() {
           <Switch>
             <Route path="/favorites">
               <Favorites />
+            </Route>
+            <Route path="/surfcheck">
+              <SurfCheck />
             </Route>
             <Route path="/">
               <Home />
