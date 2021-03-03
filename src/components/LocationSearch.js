@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { LocSearchContext } from '../contexts/LocSearchContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/components/LocationSearch.module.css';
 
 export default function LocationSearch() {
+  const appContext = useContext(LocSearchContext);
+  const { handleSubmit, handleSearchChange } = appContext;
+  console.log(appContext);
+
   return (
     <>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.locationSearchContainer}>
           <input
             required
@@ -15,6 +20,7 @@ export default function LocationSearch() {
             type="text"
             className={styles.locationSearchInput}
             placeholder="Search for surf spot or city"
+            onChange={(e) => handleSearchChange(e)}
            />
         </div>
         <div className={styles.locationSearchBtn}>

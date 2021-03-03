@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
+import { LocSearchProvider } from './contexts/LocSearchContext';
 
 import styles from '../src/styles/App.module.css';
 
@@ -12,6 +13,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+        <LocSearchProvider>
         <div className={styles.container}>
           <Switch>
             <Route path="/favorites">
@@ -22,6 +24,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        </LocSearchProvider>
         <BottomNav />
      </BrowserRouter>
     </>
