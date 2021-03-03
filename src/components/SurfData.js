@@ -20,7 +20,7 @@ export default function SurfData() {
       <div>
         <img src="/globe.png" alt="" className={styles.SurfDataMapImage} />
       </div>
-      <div className={styles.SurfDataSwell}>
+      <div className={styles.SurfDataCont}>
         <div>
           <div className={styles.SurfDataWaveHeightTitle}>Wave Height</div>
           <div className={styles.SurfDataWaveHeightvalue}>2ft</div>
@@ -42,6 +42,11 @@ export default function SurfData() {
               </div>
               <div>57°F</div>
             </div>
+          </div>
+          <div className={styles.SurfDataWindCont}>
+            <div className={styles.SurfDataWindTitle}>Wind</div>
+            <div>13kts 164 °</div>
+            <div className={styles.SurfDataWindGust}>(16kts gusts)</div>
           </div>
         </div>
       </div>

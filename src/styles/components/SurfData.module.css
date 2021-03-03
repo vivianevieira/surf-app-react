@@ -21,7 +21,7 @@
   color: #0e4da4;
 }
 
-.SurfDataSwell {
+.SurfDataCont {
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 2rem;
@@ -55,7 +55,7 @@
 }
 
 .SurfDataPrimarySwellTitle,
-.wind-title {
+.SurfDataWindTitle {
   color: #cdcaca;
   font-weight: 300;
   margin-bottom: 0.2rem;
@@ -83,4 +83,10 @@
 .SurfDataWaterTempIcon {
   font-size: 14pt;
   margin-bottom: 0.2rem;
+}
+
+.SurfDataWindGust {
+  font-size: 7pt;
+  font-weight: 200;
+  margin-top: 0.2rem;
 }
