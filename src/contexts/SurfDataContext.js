@@ -3,15 +3,40 @@ import React, { useState, createContext} from 'react';
 export const SurfDataContext = React.createContext();
 
 export function SurfDataProvider(props) {
-  const [location, setLocation] = useState([]);
+  const url = 'https://api.stormglass.io/v2/weather/point';
+  const apiKey = '66d9612a-22c0-11eb-a5a9-0242ac130002-66d961a2-22c0-11eb-a5a9-0242ac130002';
+  const params = 'swellHeight,swellDirection,swellPeriod,waveHeight,waveDirection,wavePeriod,secondarySwellHeight,secondarySwellDirection,secondarySwellPeriod,airTemperature,waterTemperature,windSpeed,windDirection,gust&source=noaa'
 
-  function locationClicked(props) {
+  const [location, setLocation] = useState({});
+  const [surfData, setSurfData] = useState([]);
+
+  const handleLocationClicked = async (props) => {
+    console.log(props);
     setLocation(props);
-    console.log('clickedlocations:', location);
+    const { formatted, geometry, annotations } = props;
+
+    const lat = geometry.lat;
+    const long = geometry.lng;
+
+    const timeOffset = annotations.timezone.offset_sec;
+    const startTime = Math.floor(Date.now() / 1000);
+    const searchUrl = `${url}?lat=${lat}&lng=${long}&params=${params}&source=noaa&start=${startTime}`;
+
+    const response =  await fetch(searchUrl, {
+      headers: {
+        'Authorization': apiKey
+      }
+    })
+
+    const data = await response.json();
+    const surfDataNow = data.hours[0];
+
+    setSurfData(surfDataNow);
+    console.log(surfData)
   }
 
   return(
-    <SurfDataContext.Provider value={{location, locationClicked}}>
+    <SurfDataContext.Provider value={{location, surfData, handleLocationClicked}}>
       {props.children}
     </SurfDataContext.Provider>
   )
