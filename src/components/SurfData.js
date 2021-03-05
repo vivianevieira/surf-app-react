@@ -1,37 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faWater, faThermometerHalf } from '@fortawesome/free-solid-svg-icons';
-import { SurfDataContext } from '../contexts/SurfDataContext'
+// import { SurfDataContext } from '../contexts/SurfDataContext'
 import styles from '../styles/components/SurfData.module.css';
 
-export default function SurfData() {
-  const { location, surfData } = useContext(SurfDataContext);
-
+export default function SurfData({ location, loading, surfData }) {
+  // const { location, surfData } = useContext(SurfDataContext);
   const { formatted } = location;
-  // const {
-  //   waveHeight,
-  //   wavePeriod,
-  //   waveDirection,
-  //   secondarySwellHeight,
-  //   secondarySwellPeriod,
-  //   secondarySwellDirection,
-  //   waterTemperature,
-  //   airTemperature,
-  //   windSpeed,
-  //   windDirection
-  // } = surfData;
 
-  console.log('surfData', surfData)
-
-  const [SurfDataValues, setSurfDataValues] = useState({})
-
-  useEffect(() => {
-    setSurfDataValues(surfData);
-  }, []);
-
-  console.log('SurfDataValues', SurfDataValues)
-
-    const {
+  const {
     waveHeight,
     wavePeriod,
     waveDirection,
@@ -42,9 +19,18 @@ export default function SurfData() {
     airTemperature,
     windSpeed,
     windDirection
-  } = SurfDataValues;
+  } = surfData;
 
-  const waveHeight1 = Math.round(waveHeight.noaa * 3.281);
+  console.log('loading', loading)
+  console.log('location', location)
+  console.log('surfData', surfData)
+
+  const waveHeightValue = Math.round(waveHeight.noaa * 3.281);
+  const wavePeriodValue = wavePeriod.noaa;
+  const waveDirectionValue = waveDirection.noaa;
+  const secondarySwellHeightValue = Math.round(secondarySwellHeight.noaa * 3.281);
+  const secondarySwellPeriodValue = secondarySwellPeriod.noaa;
+  const secondarySwellDirectionValue = secondarySwellDirection.noaa;
 
 
 
@@ -66,10 +52,12 @@ export default function SurfData() {
       <div className={styles.SurfDataCont}>
         <div>
           <div className={styles.SurfDataWaveHeightTitle}>Wave Height</div>
-          <div className={styles.SurfDataWaveHeightvalue}>{waveHeight1}ft</div>
-          <div className={styles.SurfDataPrimarySwell}>{wavePeriod.noaa}s {waveDirection.noaa}°</div>
+          <div className={styles.SurfDataWaveHeightvalue}>{waveHeightValue}ft</div>
+          <div className={styles.SurfDataPrimarySwell}>{wavePeriodValue}s {waveDirectionValue}°</div>
           <div className={styles.SurfDataPrimarySwellTitle}>Secondary Swell</div>
-          <div>1.1ft at 14s 290°</div>
+          <div>
+            {`${secondarySwellHeightValue}ft at ${secondarySwellPeriodValue}s ${secondarySwellDirectionValue}°`}
+          </div>
         </div>
         <div>
           <div className={styles.SurfDataTempCont}>

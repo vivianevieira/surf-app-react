@@ -9,6 +9,7 @@ export function SurfDataProvider(props) {
 
   const [location, setLocation] = useState({});
   const [surfData, setSurfData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleLocationClicked = async (props) => {
     console.log(props);
@@ -22,22 +23,28 @@ export function SurfDataProvider(props) {
     const startTime = Math.floor(Date.now() / 1000);
     const searchUrl = `${url}?lat=${lat}&lng=${long}&params=${params}&source=noaa&start=${startTime}`;
 
-    const response =  await fetch(searchUrl, {
-      headers: {
-        'Authorization': apiKey
-      }
-    })
+    try {
+      const response =  await fetch(searchUrl, {
+        headers: {
+          'Authorization': apiKey
+        }
+      })
 
-    const data = await response.json();
-    const surfDataNow = data.hours[0];
+      const data = await response.json();
+      const surfDataNow = data.hours[0];
 
-    setSurfData(surfDataNow);
-    console.log(surfData)
+      setSurfData(surfDataNow);
+      setLoading(false);
+      console.log(surfData)
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
   return(
-    <SurfDataContext.Provider value={{location, surfData, handleLocationClicked}}>
-      {props.children}
+    <SurfDataContext.Provider value={{location, loading, surfData, handleLocationClicked}}>
+      { props.children }
     </SurfDataContext.Provider>
   )
 }
