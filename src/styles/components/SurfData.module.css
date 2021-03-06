@@ -85,6 +85,13 @@
   margin-bottom: 1.7rem;
 }
 
+.SurfDataTempTitle {
+  color: #cdcaca;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
 .SurfDataWaterTemp {
   margin-right: 0.5rem;
 }

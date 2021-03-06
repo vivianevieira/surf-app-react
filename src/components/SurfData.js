@@ -83,12 +83,14 @@ export default function SurfData({ location, loading, surfData }) {
         <div>
           <div className={styles.SurfDataTempCont}>
             <div className={styles.SurfDataWaterTemp}>
+              <div className={styles.SurfDataTempTitle}>Water</div>
               <div>
                 <FontAwesomeIcon icon={faWater} size="lg" className={styles.SurfDataWaterTempIcon} />
               </div>
               <div className={styles.SurfDataValues}>{`${waterTemperatureValue}°F`}</div>
             </div>
             <div className={styles.SurfDataAirTemp}>
+              <div className={styles.SurfDataTempTitle}>Air</div>
               <div>
                 <FontAwesomeIcon icon={faThermometerHalf} size="lg" className={styles.SurfDataAirTempIcon} />
               </div>
