@@ -12,7 +12,9 @@ export function SurfDataProvider(props) {
   const [loading, setLoading] = useState(true);
 
   const handleLocationClicked = async (props) => {
+    setLoading(true);
     console.log(props);
+    console.log(loading);
     setLocation(props);
     const { formatted, geometry, annotations } = props;
 
@@ -24,6 +26,7 @@ export function SurfDataProvider(props) {
     const searchUrl = `${url}?lat=${lat}&lng=${long}&params=${params}&source=noaa&start=${startTime}`;
 
     try {
+
       const response =  await fetch(searchUrl, {
         headers: {
           'Authorization': apiKey
