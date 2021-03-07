@@ -5,6 +5,8 @@
 
 .SunlightTimesDateHeader {
   text-align: center;
+  /* color: #cdcaca; */
+  font-weight: 300;
 }
 
 .SunlightTimesSunrise {
@@ -15,4 +17,9 @@
 
 .SunlightTimesIcon {
   margin-right: 5px;
+}
+
+.SunlightTimesValue {
+  font-weight: 200;
+
 }
