@@ -30,7 +30,6 @@ export default function SurfData({ location, loading, surfData }) {
   console.log('surfData', surfData)
 
   //convert values from mt to ft, C° to F°, and from mt to knot
-
   const waveHeightValue = Math.round(waveHeight.noaa * 3.281);
   const swellDirectionValue =Math.round(swellDirection.noaa);
   const swellPeriodValue = Math.round(swellPeriod.noaa);
