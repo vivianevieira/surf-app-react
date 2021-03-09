@@ -5,7 +5,6 @@ import { faHeart, faWater, faThermometerHalf } from '@fortawesome/free-solid-svg
 import styles from '../styles/components/SurfData.module.css';
 
 export default function SurfData({ location, loading, surfData }) {
-  // const { location, surfData } = useContext(SurfDataContext);
   const { formatted } = location;
 
   const {
@@ -30,7 +29,6 @@ export default function SurfData({ location, loading, surfData }) {
   console.log('surfData', surfData)
 
   //convert values from mt to ft, C° to F°, and from mt to knot
-
   const waveHeightValue = Math.round(waveHeight.noaa * 3.281);
   const swellDirectionValue =Math.round(swellDirection.noaa);
   const swellPeriodValue = Math.round(swellPeriod.noaa);

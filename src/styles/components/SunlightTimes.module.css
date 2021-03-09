@@ -1,0 +1,25 @@
+.SunlightTimesCont {
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+.SunlightTimesDateHeader {
+  text-align: center;
+  /* color: #cdcaca; */
+  font-weight: 300;
+}
+
+.SunlightTimesSunrise {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.SunlightTimesIcon {
+  margin-right: 5px;
+}
+
+.SunlightTimesValue {
+  font-weight: 200;
+
+}
