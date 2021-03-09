@@ -10,10 +10,8 @@ export default function SunlightTimes() {
     lastLight: ''
   });
   const [showInfo, setShowInfo] = useState(false);
-  console.log(sunlightData);
 
   const { location } = useContext(SurfDataContext);
-  console.log('location', location);
 
   const dateNow = new Date();
   const options = { month: 'long' };
@@ -33,7 +31,6 @@ export default function SunlightTimes() {
     const lat = location.geometry.lat;
     const long = location.geometry.lng;
     const timeOffset = location.annotations.timezone.offset_sec;
-    console.log('timeOffset', timeOffset);
 
     try {
       const searchUrl = `${url}point?lat=${lat}&lng=${long}&start=${isoDateString}`
@@ -49,16 +46,19 @@ export default function SunlightTimes() {
       let sunrise = new Date(jsonData.data[0].sunrise);
       let sunset = new Date(jsonData.data[0].sunset);
 
-      const dawnTimeObj = new Date(dawn.getTime() + (dawn.getTimezoneOffset() * 60000) + (timeOffset * 1000));
-      const duskTimeObj = new Date(dusk.getTime() + (dusk.getTimezoneOffset() * 60000) + (timeOffset * 1000));
-      const sunriseTimeObj = new Date(sunrise.getTime() + (sunrise.getTimezoneOffset() * 60000) + (timeOffset * 1000));
-      const sunsetTimeObj = new Date(sunset.getTime() + (sunset.getTimezoneOffset() * 60000) + (timeOffset * 1000));
+      const dawnDateObj = new Date(dawn.getTime() + (dawn.getTimezoneOffset() * 60000) + (timeOffset * 1000));
+      const duskDateObj = new Date(dusk.getTime() + (dusk.getTimezoneOffset() * 60000) + (timeOffset * 1000));
+      const sunriseDateObj = new Date(sunrise.getTime() + (sunrise.getTimezoneOffset() * 60000) + (timeOffset * 1000));
+      const sunsetDateObj = new Date(sunset.getTime() + (sunset.getTimezoneOffset() * 60000) + (timeOffset * 1000));
 
-      const firstLight = `${dawnTimeObj.getHours()}:${dawnTimeObj.getMinutes()} am`;
-      const sunriseTime = `${sunriseTimeObj.getHours()}:${sunriseTimeObj.getMinutes() > 9 ? sunriseTimeObj.getMinutes() : '0'
-      + sunriseTimeObj.getMinutes()} am`;
-      const sunsetTime = `${sunsetTimeObj.getHours() - 12}:${sunsetTimeObj.getMinutes()} pm`;
-      const lastLight = `${duskTimeObj.getHours() - 12}:${duskTimeObj.getMinutes()} pm`;
+      const firstLight = `${dawnDateObj.getHours()}:${dawnDateObj.getMinutes() > 9 ? dawnDateObj.getMinutes() : '0'
+      + dawnDateObj.getMinutes()} am`;
+      const sunriseTime = `${sunriseDateObj.getHours()}:${sunriseDateObj.getMinutes() > 9 ? sunriseDateObj.getMinutes() : '0'
+      + sunriseDateObj.getMinutes()} am`;
+      const sunsetTime = `${sunsetDateObj.getHours() - 12}:${sunsetDateObj.getMinutes() > 9 ? sunsetDateObj.getMinutes() : '0'
+      + sunsetDateObj.getMinutes()} pm`;
+      const lastLight = `${duskDateObj.getHours() - 12}:${duskDateObj.getMinutes() > 9 ? duskDateObj.getMinutes() : '0'
+      + duskDateObj.getMinutes()} pm`;
 
       setsunlightData({
         firstLight: firstLight,
@@ -76,10 +76,6 @@ export default function SunlightTimes() {
   useEffect(() => {
     getSunlightData();
   }, []);
-
-  useEffect(() => {
-  console.log(sunlightData);
-}, [sunlightData]);
 
   return (
     <>

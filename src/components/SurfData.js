@@ -5,7 +5,6 @@ import { faHeart, faWater, faThermometerHalf } from '@fortawesome/free-solid-svg
 import styles from '../styles/components/SurfData.module.css';
 
 export default function SurfData({ location, loading, surfData }) {
-  // const { location, surfData } = useContext(SurfDataContext);
   const { formatted } = location;
 
   const {
