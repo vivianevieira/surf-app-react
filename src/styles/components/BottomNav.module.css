@@ -26,3 +26,9 @@
 .bottomNavLinksActive {
   color: #0e4da4;
 }
+
+@media screen and (min-width: 768px) {
+  .bottomNavContainer {
+    max-width: 900px;
+  }
+}
