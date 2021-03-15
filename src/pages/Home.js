@@ -8,6 +8,7 @@ export default function Home() {
     <>
       <LocationSearch />
       <SuggestedSpots />
+      <SearchResults />
     </>
   )
 };
