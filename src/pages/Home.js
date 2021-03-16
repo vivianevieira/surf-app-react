@@ -1,13 +1,13 @@
 import React from 'react';
 import LocationSearch from '../components/LocationSearch';
 import SearchResults from '../components/SearchResults';
-import SuggestedSpots from '../components/SuggestedSpots';
+import SuggestedSpotsList from '../components/SuggestedSpotsList';
 
 export default function Home() {
   return (
     <>
       <LocationSearch />
-      <SuggestedSpots />
+      <SuggestedSpotsList />
       <SearchResults />
     </>
   )
