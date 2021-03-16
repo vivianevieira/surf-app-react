@@ -8,9 +8,11 @@ export function LocSearchProvider(props) {
 
   const [locations, setLocations] = useState([])
   const [search, setSearch] = useState('');
+  const [searchLoading, setSearchLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSearchLoading(true);
     try {
       const searchUrl = `${url}?q=${search}&key=${apiKey}&language=en&pretty=1`;
       const response = await fetch(searchUrl);
@@ -29,6 +31,8 @@ export function LocSearchProvider(props) {
     <LocSearchContext.Provider value={{
       search,
       locations,
+      searchLoading,
+      setSearchLoading,
       handleSubmit,
       handleSearchChange,
     }}>
