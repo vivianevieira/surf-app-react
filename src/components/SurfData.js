@@ -49,6 +49,10 @@ export default function SurfData({ location, loading, surfData }) {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const handleFavClicked = (props) => {
+    isFavorite ? removeFavorite(props) : addFavorite(props);
+  };
+
   const addFavorite = (location) => {
     // assuming no duplicates for demo purposes
     console.log('favorite clicked');
@@ -57,8 +61,9 @@ export default function SurfData({ location, loading, surfData }) {
   };
 
   const removeFavorite = (favToBeDeleted) => {
-    setFavorites(favorites.filter((fav) => favToBeDeleted !== fav));
-    setIsFavorite(false);
+    setFavorites(favorites.filter((fav) => favToBeDeleted.geometry.lat !== fav.geometry.lat && favToBeDeleted.geometry.lng !== fav.geometry.lng));
+    // setIsFavorite(false);
+    console.log('removed favorite btn clicked');
   };
 
   useEffect(() => {
@@ -76,7 +81,7 @@ export default function SurfData({ location, loading, surfData }) {
     const result = favorites.filter((fav) =>
       location.geometry.lat === fav.geometry.lat && location.geometry.lng === fav.geometry.lng
     );
-
+    console.log('filtered result', result);
     if (result.length > 0) {
       setIsFavorite(true);
     } else {
@@ -91,7 +96,7 @@ export default function SurfData({ location, loading, surfData }) {
           <h3 className={styles.surfDataLocTitle}>{formatted}</h3>
         </div>
         <div>
-          <button type="button" className={styles.SurfDataFavBtn} onClick={() => addFavorite(location)}>
+          <button type="button" className={styles.SurfDataFavBtn} onClick={() => handleFavClicked(location)}>
             <FontAwesomeIcon
               icon={faHeart}
               size="lg"
