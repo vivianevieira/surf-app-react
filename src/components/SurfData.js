@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faWater, faThermometerHalf } from '@fortawesome/free-solid-svg-icons';
-// import { SurfDataContext } from '../contexts/SurfDataContext'
 import styles from '../styles/components/SurfData.module.css';
 
 export default function SurfData({ location, loading, surfData }) {
@@ -46,64 +45,8 @@ export default function SurfData({ location, loading, surfData }) {
   const windDirectionValue = Math.round(windDirection.noaa);
   const gustValue = Math.round(gust.noaa * 1.944);
 
-  const [favorites, setFavorites] = useState([]);
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const handleFavClicked = (props) => {
-    isFavorite ? removeFavorite(props) : addFavorite(props);
-  };
-
-  const addFavorite = (location) => {
-    // assuming no duplicates for demo purposes
-    console.log('favorite clicked');
-    setFavorites([...favorites, location]);
-    setIsFavorite(true);
-  };
-
-  const removeFavorite = (favToBeDeleted) => {
-    setFavorites(favorites.filter((fav) => favToBeDeleted.geometry.lat !== fav.geometry.lat && favToBeDeleted.geometry.lng !== fav.geometry.lng));
-    // setIsFavorite(false);
-    console.log('removed favorite btn clicked');
-  };
-
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favSurfSpots'));
-    if (favorites) {
-      setFavorites(favorites);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favSurfSpots', JSON.stringify(favorites));
-  }, [favorites]);
-
-  useEffect(() => {
-    const result = favorites.filter((fav) =>
-      location.geometry.lat === fav.geometry.lat && location.geometry.lng === fav.geometry.lng
-    );
-    console.log('filtered result', result);
-    if (result.length > 0) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  }, [favorites]);
-
   return (
     <>
-      <div className={styles.SurfDataTitle}>
-        <div>
-          <h3 className={styles.surfDataLocTitle}>{formatted}</h3>
-        </div>
-        <div>
-          <button type="button" className={styles.SurfDataFavBtn} onClick={() => handleFavClicked(location)}>
-            <FontAwesomeIcon
-              icon={faHeart}
-              size="lg"
-              className={isFavorite ? styles.SurfDataFavIconHighlighted : styles.SurfDataFavIcon} />
-          </button>
-        </div>
-      </div>
       <div>
         <img src="/globe.png" alt="" className={styles.SurfDataMapImage} />
       </div>
