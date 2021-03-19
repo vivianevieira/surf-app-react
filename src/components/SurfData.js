@@ -72,7 +72,17 @@ export default function SurfData({ location, loading, surfData }) {
     localStorage.setItem('favSurfSpots', JSON.stringify(favorites));
   }, [favorites]);
 
-  // const favIconStyle = isFavorite ? 'styles.SurfDataFavIconHighlighted' : 'styles.SurfDataFavIcon';
+  useEffect(() => {
+    const result = favorites.filter((fav) =>
+      location.geometry.lat === fav.geometry.lat && location.geometry.lng === fav.geometry.lng
+    );
+
+    if (result.length > 0) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [favorites]);
 
   return (
     <>
@@ -82,7 +92,10 @@ export default function SurfData({ location, loading, surfData }) {
         </div>
         <div>
           <button type="button" className={styles.SurfDataFavBtn} onClick={() => addFavorite(location)}>
-            <FontAwesomeIcon icon={faHeart} size="lg" className={isFavorite ? styles.SurfDataFavIconHighlighted : styles.SurfDataFavIcon} />
+            <FontAwesomeIcon
+              icon={faHeart}
+              size="lg"
+              className={isFavorite ? styles.SurfDataFavIconHighlighted : styles.SurfDataFavIcon} />
           </button>
         </div>
       </div>
