@@ -46,6 +46,34 @@ export default function SurfData({ location, loading, surfData }) {
   const windDirectionValue = Math.round(windDirection.noaa);
   const gustValue = Math.round(gust.noaa * 1.944);
 
+  const [favorites, setFavorites] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const addFavorite = (location) => {
+    // assuming no duplicates for demo purposes
+    console.log('favorite clicked');
+    setFavorites([...favorites, location]);
+    setIsFavorite(true);
+  };
+
+  const removeFavorite = (favToBeDeleted) => {
+    setFavorites(favorites.filter((fav) => favToBeDeleted !== fav));
+    setIsFavorite(false);
+  };
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favSurfSpots'));
+    if (favorites) {
+      setFavorites(favorites);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favSurfSpots', JSON.stringify(favorites));
+  }, [favorites]);
+
+  // const favIconStyle = isFavorite ? 'styles.SurfDataFavIconHighlighted' : 'styles.SurfDataFavIcon';
+
   return (
     <>
       <div className={styles.SurfDataTitle}>
@@ -53,8 +81,8 @@ export default function SurfData({ location, loading, surfData }) {
           <h3 className={styles.surfDataLocTitle}>{formatted}</h3>
         </div>
         <div>
-          <button type="button" className={styles.SurfDataFavBtn}>
-            <FontAwesomeIcon icon={faHeart} size="lg" className={styles.SurfDataFavIcon} />
+          <button type="button" className={styles.SurfDataFavBtn} onClick={() => addFavorite(location)}>
+            <FontAwesomeIcon icon={faHeart} size="lg" className={isFavorite ? styles.SurfDataFavIconHighlighted : styles.SurfDataFavIcon} />
           </button>
         </div>
       </div>
