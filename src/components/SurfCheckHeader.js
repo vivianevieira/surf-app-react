@@ -10,7 +10,6 @@ export default function SurfCheckHeader({ location }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const addFavorite = (location) => {
-    // assuming no duplicates for demo purposes
     console.log('favorite clicked');
     setFavorites([...favorites, location]);
   };
