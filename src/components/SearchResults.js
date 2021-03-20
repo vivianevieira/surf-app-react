@@ -14,8 +14,8 @@ export default function SearchResults() {
     <div className={styles.SearchResultsContainer}>
       Search Results
       <ul>
-        {locations.map((loc, index) => (
-          <li key={`loc-${index}`}>
+        {locations.map(loc => (
+          <li key={loc.annotations.geohash}>
             <NavLink to="/surfcheck" onClick={() => handleLocationClicked(loc)}>
               {loc.annotations.flag}   {loc.formatted}
             </NavLink>
