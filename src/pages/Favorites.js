@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react"
 import { SurfDataContext } from '../contexts/SurfDataContext';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/pages/Favorites.module.css';
 
 export default function Favorites() {
@@ -24,15 +26,22 @@ export default function Favorites() {
       </div>
       <div className={styles.FavoritesList}>
         {favorites.length > 0 ? (
-          <ul>
-            {favorites.map(fav => (
-              <li key={fav.annotations.geohash}>
-                <NavLink to="/surfcheck" onClick={() => handleLocationClicked(fav)}>
-                  {fav.formatted}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          <table className={styles.FavoritesListTable}>
+            <tbody>
+              {favorites.map(fav => (
+                <tr key={fav.annotations.geohash}>
+                  <td>
+                    <NavLink to="/surfcheck" onClick={() => handleLocationClicked(fav)}>
+                      {fav.formatted}
+                    </NavLink>
+                  </td>
+                  <td>
+                    <FontAwesomeIcon icon={faEllipsisV} size="lg" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )
         :(
           <p>No surf spots saved to favorites yet.</p>
