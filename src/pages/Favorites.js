@@ -11,7 +11,7 @@ export default function Favorites() {
 
   const [favorites, setFavorites] = useState([]);
   const [isFavModalOpen, setIsFavModalOpen] = useState(false);
-  const [favoriteClicked, setFavoriteClicked] = useState('');
+  const [favoriteClicked, setFavoriteClicked] = useState({});
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favSurfSpots'));
@@ -22,8 +22,9 @@ export default function Favorites() {
     }
   }, []);
 
-  function openFavModal() {
+  function openFavModal(props) {
     setIsFavModalOpen(true);
+    setFavoriteClicked(props);
   }
 
   function closeFavModal() {
@@ -51,7 +52,7 @@ export default function Favorites() {
                     <FontAwesomeIcon
                       icon={faEllipsisV}
                       size="lg"
-                      onClick={() => openFavModal()}/>
+                      onClick={() => openFavModal(fav)}/>
                   </td>
                 </tr>
               ))}
@@ -62,7 +63,7 @@ export default function Favorites() {
           <p>No surf spots saved to favorites yet.</p>
         )}
       </div>
-      {isFavModalOpen && <FavoritesModal />}
+      {isFavModalOpen && <FavoritesModal closeFavModal={closeFavModal} favoriteClicked={favoriteClicked} />}
     </>
   )
 };
