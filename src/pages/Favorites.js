@@ -11,6 +11,7 @@ export default function Favorites() {
 
   const [favorites, setFavorites] = useState([]);
   const [isFavModalOpen, setIsFavModalOpen] = useState(false);
+  const [favoriteClicked, setFavoriteClicked] = useState('');
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favSurfSpots'));
