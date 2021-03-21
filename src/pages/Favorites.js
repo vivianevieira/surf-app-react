@@ -17,10 +17,12 @@ export default function Favorites() {
     const favorites = JSON.parse(localStorage.getItem('favSurfSpots'));
     if (favorites) {
       setFavorites(favorites);
-      console.log('favorites saved')
-      console.log(favorites)
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favSurfSpots', JSON.stringify(favorites));
+  }, [favorites]);
 
   function openFavModal(props) {
     setIsFavModalOpen(true);
@@ -30,7 +32,6 @@ export default function Favorites() {
   function closeFavModal() {
     setIsFavModalOpen(false);
   }
-
 
   return (
     <>
@@ -63,7 +64,7 @@ export default function Favorites() {
           <p>No surf spots saved to favorites yet.</p>
         )}
       </div>
-      {isFavModalOpen && <FavoritesModal closeFavModal={closeFavModal} favoriteClicked={favoriteClicked} />}
+      {isFavModalOpen && <FavoritesModal closeFavModal={closeFavModal} favoriteClicked={favoriteClicked} favorites={favorites} setFavorites={setFavorites} />}
     </>
   )
 };
