@@ -28,9 +28,10 @@
 .locationSearchBtn > button {
   background-color: #0e4da4;
   color: white;
-  padding: 0.5rem 1rem;
   border-radius: 3px;
   border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .locationSearchBtnMargin {

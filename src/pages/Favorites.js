@@ -3,12 +3,14 @@ import { SurfDataContext } from '../contexts/SurfDataContext';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import FavoritesModal from '../components/FavoritesModal';
 import styles from '../styles/pages/Favorites.module.css';
 
 export default function Favorites() {
   const { handleLocationClicked } = useContext(SurfDataContext);
 
   const [favorites, setFavorites] = useState([]);
+  const [isFavModalOpen, setIsFavModalOpen] = useState(false);
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favSurfSpots'));
@@ -18,6 +20,15 @@ export default function Favorites() {
       console.log(favorites)
     }
   }, []);
+
+  function openFavModal() {
+    setIsFavModalOpen(true);
+  }
+
+  function closeFavModal() {
+    setIsFavModalOpen(false);
+  }
+
 
   return (
     <>
@@ -36,7 +47,10 @@ export default function Favorites() {
                     </NavLink>
                   </td>
                   <td>
-                    <FontAwesomeIcon icon={faEllipsisV} size="lg" />
+                    <FontAwesomeIcon
+                      icon={faEllipsisV}
+                      size="lg"
+                      onClick={() => openFavModal()}/>
                   </td>
                 </tr>
               ))}
@@ -47,6 +61,7 @@ export default function Favorites() {
           <p>No surf spots saved to favorites yet.</p>
         )}
       </div>
+      {isFavModalOpen && <FavoritesModal />}
     </>
   )
 };
