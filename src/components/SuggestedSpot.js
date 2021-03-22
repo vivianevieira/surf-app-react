@@ -22,7 +22,7 @@ export function SuggestedSpot({ loc }) {
       const response = await fetch(searchUrl);
       const data = await response.json();
       const locationData =  data.results[0];
-      setLocation({ ...locationData, formatted: spotName});
+      setLocation({ ...locationData, formatted: spotName, geometry: geometry });
     } catch (e) {
       console.log(e);
     }

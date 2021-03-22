@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faWater, faThermometerHalf } from '@fortawesome/free-solid-svg-icons';
-// import { SurfDataContext } from '../contexts/SurfDataContext'
 import styles from '../styles/components/SurfData.module.css';
 
 export default function SurfData({ location, loading, surfData }) {
@@ -48,16 +47,6 @@ export default function SurfData({ location, loading, surfData }) {
 
   return (
     <>
-      <div className={styles.SurfDataTitle}>
-        <div>
-          <h3 className={styles.surfDataLocTitle}>{formatted}</h3>
-        </div>
-        <div>
-          <button type="button" className={styles.SurfDataFavBtn}>
-            <FontAwesomeIcon icon={faHeart} size="lg" className={styles.SurfDataFavIcon} />
-          </button>
-        </div>
-      </div>
       <div>
         <img src="/globe.png" alt="" className={styles.SurfDataMapImage} />
       </div>

@@ -49,8 +49,8 @@ export default function SuggestedSpotsList() {
     <div className={styles.SuggestedSpotsContainer}>
       <p>Suggestions of famous surf spots:</p>
       <ul>
-        {locationsList.map((loc, index) => {
-          return <SuggestedSpot key={`loc-${index}`} loc={loc} />
+        {locationsList.map(loc => {
+          return <SuggestedSpot key={loc.spotName} loc={loc} />
         })}
       </ul>
     </div>

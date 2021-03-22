@@ -26,7 +26,6 @@ export function SurfDataProvider(props) {
     const searchUrl = `${url}?lat=${lat}&lng=${long}&params=${params}&source=noaa&start=${startTime}`;
 
     try {
-
       const response =  await fetch(searchUrl, {
         headers: {
           'Authorization': apiKey

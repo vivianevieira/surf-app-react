@@ -1,8 +1,7 @@
-import { useState, useContext, useEffect } from 'react';
-import { SurfDataContext } from '../contexts/SurfDataContext';
+import { useState, useEffect } from 'react';
 import styles from '../styles/components/SunlightTimes.module.css';
 
-export default function SunlightTimes() {
+export default function SunlightTimes({ location }) {
   const [sunlightData, setsunlightData] = useState({
     firstLight: '',
     sunriseTime: '',
@@ -10,8 +9,6 @@ export default function SunlightTimes() {
     lastLight: ''
   });
   const [showInfo, setShowInfo] = useState(false);
-
-  const { location } = useContext(SurfDataContext);
 
   const dateNow = new Date();
   const options = { month: 'long' };
