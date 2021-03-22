@@ -12,8 +12,10 @@ function handleRenameChange(e) {
 
 function handleSubmit(e) {
   e.preventDefault();
+  const index = favorites.findIndex(fav => fav.annotations.geohash === favoriteClicked.annotations.geohash);
   const result = favorites.filter(fav => fav.annotations.geohash !== favoriteClicked.annotations.geohash);
-  setFavorites([...result, {...favoriteClicked, formatted: rename}]);
+  result.splice(index, 0, {...favoriteClicked, formatted: rename});
+  setFavorites(result);
   closeFavModal();
 }
 
