@@ -7,10 +7,14 @@ import styles from '../styles/pages/SurfCheck.module.css'
 import SurfCheckHeader from '../components/SurfCheckHeader';
 
 export default function SurfCheck () {
-  const { location, loading, surfData } = useContext(SurfDataContext);
+  const { location, loading, surfData, invalidSpot } = useContext(SurfDataContext);
+
   return (
     <>
-    {loading ? <Loader /> :
+    {invalidSpot ? (
+      <p>No surf data available for this spot.</p>
+    ) :
+    (loading ? <Loader /> :
     <>
       <SurfCheckHeader location={location} />
       <SurfData surfData={surfData} location={location} loading={loading} />
@@ -18,7 +22,7 @@ export default function SurfCheck () {
         <SunlightTimes location={location} />
       </div>
      </>
-      }
+    )}
     </>
   );
 }
