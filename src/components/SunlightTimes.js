@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import sunriseImg from '../assets/images/sunrise.png';
+import sunsetImg from '../assets/images/sunset.png';
 import styles from '../styles/components/SunlightTimes.module.css';
 
 export default function SunlightTimes({ location }) {
@@ -83,7 +85,7 @@ export default function SunlightTimes({ location }) {
       </div>
       <div className={styles.SunlightTimesData}>
         <div className={styles.SunlightTimesIcon}>
-          <img src="../images/sunrise.png" alt="" width="35px" />
+          <img src={sunriseImg} alt="" width="35px" />
         </div>
         <div>
           <div>
@@ -96,7 +98,7 @@ export default function SunlightTimes({ location }) {
       </div>
       <div className={styles.SunlightTimesData}>
         <div className={styles.SunlightTimesIcon}>
-          <img src="../images/sunset.png" alt="" width="35px" />
+          <img src={sunsetImg} alt="" width="35px" />
         </div>
         <div>
           <div>

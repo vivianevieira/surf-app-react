@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import closeImg from '../assets/images/close.svg';
 import styles from '../styles/components/FavoritesModal.module.css';
 
 export default function FavoritesModal(props) {
@@ -38,7 +39,7 @@ function handleSubmit(e) {
         </form>
 
         <button type="button" className={styles.closeModal} onClick={closeFavModal}>
-          <img src="images/icons/close.svg" alt="Close modal" />
+          <img src={closeImg} alt="Close modal" />
         </button>
       </div>
     </div>
