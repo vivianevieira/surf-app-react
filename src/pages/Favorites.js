@@ -7,7 +7,7 @@ import FavoritesModal from '../components/FavoritesModal';
 import styles from '../styles/pages/Favorites.module.css';
 
 export default function Favorites() {
-  const { handleLocationClicked } = useContext(SurfDataContext);
+  const { handleLocationClicked, setInvalidSpot } = useContext(SurfDataContext);
 
   const [favorites, setFavorites] = useState([]);
   const [isFavModalOpen, setIsFavModalOpen] = useState(false);
@@ -23,6 +23,10 @@ export default function Favorites() {
   useEffect(() => {
     localStorage.setItem('favSurfSpots', JSON.stringify(favorites));
   }, [favorites]);
+
+  useEffect(() => {
+    setInvalidSpot(false);
+  }, []);
 
   function openFavModal(props) {
     setIsFavModalOpen(true);
@@ -64,7 +68,14 @@ export default function Favorites() {
           <p>No surf spots saved to favorites yet.</p>
         )}
       </div>
-      {isFavModalOpen && <FavoritesModal closeFavModal={closeFavModal} favoriteClicked={favoriteClicked} favorites={favorites} setFavorites={setFavorites} />}
+      {isFavModalOpen &&
+        <FavoritesModal
+          closeFavModal={closeFavModal}
+          favoriteClicked={favoriteClicked}
+          favorites={favorites}
+          setFavorites={setFavorites}
+        />
+      }
     </>
   )
 };

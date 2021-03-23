@@ -13,9 +13,10 @@ import styles from '../src/styles/App.module.css';
 function App() {
   return (
     <>
-    <SurfDataProvider>
+    {/* <SurfDataProvider> */}
       <BrowserRouter>
         <Header />
+        <SurfDataProvider>
         <LocSearchProvider>
         <div className={styles.container}>
           <Switch>
@@ -31,9 +32,10 @@ function App() {
           </Switch>
         </div>
         </LocSearchProvider>
+        </SurfDataProvider>
         <BottomNav />
      </BrowserRouter>
-     </SurfDataProvider>
+     {/* </SurfDataProvider> */}
     </>
   );
 }

@@ -10,18 +10,16 @@ export function SurfDataProvider(props) {
   const [location, setLocation] = useState({});
   const [surfData, setSurfData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [invalidSpot, setInvalidSpot] = useState(false);
 
   const handleLocationClicked = async (props) => {
     setLoading(true);
-    console.log(props);
-    console.log(loading);
     setLocation(props);
     const { formatted, geometry, annotations } = props;
 
     const lat = geometry.lat;
     const long = geometry.lng;
 
-    const timeOffset = annotations.timezone.offset_sec;
     const startTime = Math.floor(Date.now() / 1000);
     const searchUrl = `${url}?lat=${lat}&lng=${long}&params=${params}&source=noaa&start=${startTime}`;
 
@@ -35,9 +33,12 @@ export function SurfDataProvider(props) {
       const data = await response.json();
       const surfDataNow = data.hours[0];
 
-      setSurfData(surfDataNow);
-      setLoading(false);
-      console.log(surfData)
+      if (surfDataNow.waveHeight === undefined) {
+        setInvalidSpot(true);
+      } else {
+        setSurfData(surfDataNow);
+        setLoading(false);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -45,7 +46,14 @@ export function SurfDataProvider(props) {
   }
 
   return(
-    <SurfDataContext.Provider value={{location, loading, surfData, handleLocationClicked}}>
+    <SurfDataContext.Provider value={{
+      location,
+      loading,
+      surfData,
+      handleLocationClicked,
+      invalidSpot,
+      setInvalidSpot
+    }}>
       { props.children }
     </SurfDataContext.Provider>
   )

@@ -5,9 +5,7 @@ import { faCompass } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/components/LocationSearch.module.css';
 
 export default function LocationSearch() {
-  const appContext = useContext(LocSearchContext);
-  const { handleSubmit, handleSearchChange } = appContext;
-  console.log(appContext);
+  const { handleSubmit, handleSearchChange } = useContext(LocSearchContext);
 
   return (
     <>
@@ -18,7 +16,6 @@ export default function LocationSearch() {
             id="searchInput"
             name="searchInput"
             type="text"
-            className={styles.locationSearchInput}
             placeholder="Search for surf spot or city"
             onChange={(e) => handleSearchChange(e)}
            />

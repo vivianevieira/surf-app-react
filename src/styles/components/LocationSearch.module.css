@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.locationSearchInput {
+.locationSearchContainer input {
   display: block;
   width: 100%;
   border-radius: 1.5rem;
@@ -25,13 +25,18 @@
   justify-content: flex-end;
 }
 
-.locationSearchBtn > button {
+.locationSearchBtn button {
   background-color: #0e4da4;
   color: white;
   border-radius: 3px;
   border: none;
   padding: 0.5rem 1rem;
   margin-bottom: 0.8rem;
+  transition: filter 0.2s;
+}
+
+.locationSearchBtn button:hover {
+  filter: brightness(1.15);
 }
 
 .locationSearchBtnMargin {

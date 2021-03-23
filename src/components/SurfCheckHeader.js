@@ -10,13 +10,13 @@ export default function SurfCheckHeader({ location }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const addFavorite = (location) => {
-    console.log('favorite clicked');
     setFavorites([...favorites, location]);
   };
 
   const removeFavorite = (favToBeDeleted) => {
-    setFavorites(favorites.filter((fav) => favToBeDeleted.geometry.lat !== fav.geometry.lat && favToBeDeleted.geometry.lng !== fav.geometry.lng));
-    console.log('removed favorite btn clicked');
+    setFavorites(favorites.filter((fav) =>
+      favToBeDeleted.geometry.lat !== fav.geometry.lat && favToBeDeleted.geometry.lng !== fav.geometry.lng
+    ));
   };
 
   const handleFavClicked = (props) => {
@@ -38,7 +38,6 @@ export default function SurfCheckHeader({ location }) {
     const result = favorites.filter((fav) =>
       location.geometry.lat === fav.geometry.lat && location.geometry.lng === fav.geometry.lng
     );
-    console.log('filtered result', result);
     if (result.length > 0) {
       setIsFavorite(true);
     } else {

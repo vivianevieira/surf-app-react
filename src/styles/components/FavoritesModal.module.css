@@ -48,7 +48,7 @@
 }
 
 .btnContainer button:hover {
-  filter: brightness(0.9);
+  filter: brightness(1.15);
 }
 
 .container button.closeModal {
