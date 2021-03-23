@@ -68,7 +68,14 @@ export default function Favorites() {
           <p>No surf spots saved to favorites yet.</p>
         )}
       </div>
-      {isFavModalOpen && <FavoritesModal closeFavModal={closeFavModal} favoriteClicked={favoriteClicked} favorites={favorites} setFavorites={setFavorites} />}
+      {isFavModalOpen &&
+        <FavoritesModal
+          closeFavModal={closeFavModal}
+          favoriteClicked={favoriteClicked}
+          favorites={favorites}
+          setFavorites={setFavorites}
+        />
+      }
     </>
   )
 };
