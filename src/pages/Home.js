@@ -7,13 +7,14 @@ import SuggestedSpotsList from '../components/SuggestedSpotsList';
 
 export default function Home() {
   const appContext = useContext(LocSearchContext);
-  const { searchLoading, setSearchLoading } = appContext;
+  const { searchLoading, setSearchLoading, setInvalidSearch } = appContext;
 
   const { setInvalidSpot } = useContext(SurfDataContext);
 
   useEffect(() => {
     setSearchLoading(false);
     setInvalidSpot(false);
+    setInvalidSearch(false);
   }, []);
 
   return (

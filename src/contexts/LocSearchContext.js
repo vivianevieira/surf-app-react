@@ -9,6 +9,7 @@ export function LocSearchProvider(props) {
   const [locations, setLocations] = useState([])
   const [search, setSearch] = useState('');
   const [searchLoading, setSearchLoading] = useState(false);
+  const [invalidSearch, setInvalidSearch] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,12 @@ export function LocSearchProvider(props) {
       const searchUrl = `${url}?q=${search}&key=${apiKey}&language=en&pretty=1`;
       const response = await fetch(searchUrl);
       const data = await response.json();
-      setLocations(data.results);
+      if (data.results.length === 0) {
+        setInvalidSearch(true);
+      } else {
+        setLocations(data.results);
+        setInvalidSearch(false);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -35,6 +41,8 @@ export function LocSearchProvider(props) {
       setSearchLoading,
       handleSubmit,
       handleSearchChange,
+      invalidSearch,
+      setInvalidSearch
     }}>
       { props.children }
     </LocSearchContext.Provider>

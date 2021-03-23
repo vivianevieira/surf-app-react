@@ -42,8 +42,6 @@ export function SurfDataProvider(props) {
         setSurfData(surfDataNow);
         setLoading(false);
       }
-      // setSurfData(surfDataNow);
-      // setLoading(false);
     } catch (e) {
       console.log(e);
     }
