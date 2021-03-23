@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/surf-app-react/static/css/main.9c4ba3e6.chunk.css",
+    "main.js": "/surf-app-react/static/js/main.6cb84500.chunk.js",
+    "main.js.map": "/surf-app-react/static/js/main.6cb84500.chunk.js.map",
+    "runtime-main.js": "/surf-app-react/static/js/runtime-main.be8336f9.js",
+    "runtime-main.js.map": "/surf-app-react/static/js/runtime-main.be8336f9.js.map",
+    "static/js/2.d3883139.chunk.js": "/surf-app-react/static/js/2.d3883139.chunk.js",
+    "static/js/2.d3883139.chunk.js.map": "/surf-app-react/static/js/2.d3883139.chunk.js.map",
+    "index.html": "/surf-app-react/index.html",
+    "static/css/main.9c4ba3e6.chunk.css.map": "/surf-app-react/static/css/main.9c4ba3e6.chunk.css.map",
+    "static/js/2.d3883139.chunk.js.LICENSE.txt": "/surf-app-react/static/js/2.d3883139.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be8336f9.js",
+    "static/js/2.d3883139.chunk.js",
+    "static/css/main.9c4ba3e6.chunk.css",
+    "static/js/main.6cb84500.chunk.js"
+  ]
+}
