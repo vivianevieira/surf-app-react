@@ -20,7 +20,6 @@ export function SurfDataProvider(props) {
     const lat = geometry.lat;
     const long = geometry.lng;
 
-    // const timeOffset = annotations.timezone.offset_sec;
     const startTime = Math.floor(Date.now() / 1000);
     const searchUrl = `${url}?lat=${lat}&lng=${long}&params=${params}&source=noaa&start=${startTime}`;
 

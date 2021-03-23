@@ -23,10 +23,6 @@ export default function SurfData({ location, loading, surfData }) {
     gust
   } = surfData;
 
-  console.log('loading', loading)
-  console.log('location', location)
-  console.log('surfData', surfData)
-
   //convert values from mt to ft, C° to F°, and from mt to knot
   const waveHeightValue = Math.round(waveHeight.noaa * 3.281);
   const swellDirectionValue =Math.round(swellDirection.noaa);
