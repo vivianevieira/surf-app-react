@@ -16,7 +16,6 @@ export default function LocationSearch() {
             id="searchInput"
             name="searchInput"
             type="text"
-            className={styles.locationSearchInput}
             placeholder="Search for surf spot or city"
             onChange={(e) => handleSearchChange(e)}
            />
