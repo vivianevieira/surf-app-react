@@ -13,7 +13,6 @@ import styles from '../src/styles/App.module.css';
 function App() {
   return (
     <>
-    {/* <SurfDataProvider> */}
       <BrowserRouter>
         <Header />
         <SurfDataProvider>
@@ -35,7 +34,6 @@ function App() {
         </SurfDataProvider>
         <BottomNav />
      </BrowserRouter>
-     {/* </SurfDataProvider> */}
     </>
   );
 }
