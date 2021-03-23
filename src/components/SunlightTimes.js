@@ -78,23 +78,33 @@ export default function SunlightTimes({ location }) {
     <>
     {showInfo ?
     <div className={styles.SunlightTimesCont}>
-      <div className={styles.SunlightTimesDateHeader}>{dateHeader}</div>
-      <div className={styles.SunlightTimesSunrise}>
+      <div className={styles.SunlightTimesDateHeader}>
+        {dateHeader}
+      </div>
+      <div className={styles.SunlightTimesData}>
         <div className={styles.SunlightTimesIcon}>
           <img src="../images/sunrise.png" alt="" width="35px" />
         </div>
         <div>
-          <div>First light: <span className={styles.SunlightTimesValue}>{sunlightData.firstLight}</span></div>
-          <div>Sunrise: <span className={styles.SunlightTimesValue}>{sunlightData.sunriseTime}</span></div>
+          <div>
+            First light: <span>{sunlightData.firstLight}</span>
+          </div>
+          <div>
+            Sunrise: <span>{sunlightData.sunriseTime}</span>
+          </div>
         </div>
       </div>
-      <div className={styles.SunlightTimesSunrise}>
+      <div className={styles.SunlightTimesData}>
         <div className={styles.SunlightTimesIcon}>
           <img src="../images/sunset.png" alt="" width="35px" />
         </div>
         <div>
-          <div>Sunset: <span className={styles.SunlightTimesValue}>{sunlightData.sunsetTime}</span></div>
-          <div>Last light: <span className={styles.SunlightTimesValue}>{sunlightData.lastLight}</span></div>
+          <div>
+            Sunset: <span>{sunlightData.sunsetTime}</span>
+          </div>
+          <div>
+            Last light: <span>{sunlightData.lastLight}</span>
+          </div>
         </div>
       </div>
     </div>

@@ -5,21 +5,19 @@
 
 .SunlightTimesDateHeader {
   text-align: center;
-  /* color: #cdcaca; */
   font-weight: 300;
 }
 
-.SunlightTimesSunrise {
+.SunlightTimesData {
   display: flex;
   margin-top: 10px;
   align-items: center;
 }
 
-.SunlightTimesIcon {
-  margin-right: 5px;
+.SunlightTimesData span {
+  font-weight: 200;
 }
 
-.SunlightTimesValue {
-  font-weight: 200;
-
+.SunlightTimesIcon {
+  margin-right: 5px;
 }

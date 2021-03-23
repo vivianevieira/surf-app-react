@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LocSearchContext } from '../contexts/LocSearchContext';
 import { SurfDataContext } from '../contexts/SurfDataContext';
 import styles from '../styles/components/SearchResults.module.css';
 
 export default function SearchResults() {
-  const appContext = useContext(LocSearchContext);
-  const { locations, invalidSearch } = appContext;
+  const { locations, invalidSearch } = useContext(LocSearchContext);
 
   const { handleLocationClicked } = useContext(SurfDataContext);
 
