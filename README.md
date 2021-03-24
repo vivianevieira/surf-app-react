@@ -29,4 +29,4 @@ Try the application live at https://vivianevieira.github.io/surf-app-react/.
 
 ## preview
 
-![Image of app](https://i.ibb.co/6RyLrGs/Screen-Shot-2020-11-18-at-2-56-44-PM.png)
+![Image of app](https://vivianevieira.github.io/surf-app-react/surf-app-screen-shot.png)
