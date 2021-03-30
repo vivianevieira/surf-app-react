@@ -19,10 +19,10 @@ const locationsList = [
     countryFlag: 'us'
   },
   {
-    spotName: 'Gold Coast, Queensland, Australia',
+    spotName: 'Kirra, Queensland, Australia',
     geometry: {
-      lat: -28.0023731,
-      lng: 153.4145987
+      lat: -28.1676805,
+      lng: 153.5295271
     },
     countryFlag: 'au'
   },
