@@ -36,7 +36,8 @@ export default function SunlightTimes({ location }) {
 
     const isoDateString = startDate.toISOString();
 
-    const localDateHeader = new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(locationTime);
+    const localDateHeader = new Intl.DateTimeFormat('en-US',
+    { dateStyle: 'full' }).format(locationTime);
 
     setDateHeader(localDateHeader);
 

@@ -20,7 +20,7 @@ export function SurfDataProvider(props) {
   const handleLocationClicked = async (props) => {
     setLoading(true);
     setLocation(props);
-    const { formatted, geometry, annotations } = props;
+    const { formatted, geometry } = props;
 
     const lat = geometry.lat;
     const long = geometry.lng;

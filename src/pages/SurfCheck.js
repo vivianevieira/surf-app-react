@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import { SurfDataContext } from '../contexts/SurfDataContext';
 import styles from '../styles/pages/SurfCheck.module.css'
 import SurfCheckHeader from '../components/SurfCheckHeader';
+import TideData from '../components/TideData';
 
 export default function SurfCheck () {
   const { location, loading, surfData, invalidSpot } = useContext(SurfDataContext);
@@ -20,6 +21,7 @@ export default function SurfCheck () {
       <SurfData surfData={surfData} location={location} loading={loading} />
       <div className={styles.SurfCheckLightTideCont}>
         <SunlightTimes location={location} />
+        <TideData location={location} />
       </div>
      </>
     )}
