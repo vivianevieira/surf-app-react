@@ -12,24 +12,33 @@ export default function SunlightTimes({ location }) {
   });
   const [showInfo, setShowInfo] = useState(false);
 
-  const dateNow = new Date();
-  const options = { month: 'long' };
-  const year = dateNow.getFullYear();
-  const day = dateNow.getDate();
-  const month = new Intl.DateTimeFormat('en-US', options).format(dateNow);
-  const dateHeader = `${month} ${day}, ${year}`;
+  const [dateHeader, setDateHeader] = useState('');
 
   const getSunlightData = async () => {
     const url = 'https://api.stormglass.io/v2/astronomy/';
     const apiKey = '66d9612a-22c0-11eb-a5a9-0242ac130002-66d961a2-22c0-11eb-a5a9-0242ac130002';
 
-    const date = new Date();
-    const startDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 0, 0, 0);
-    const isoDateString = startDate.toISOString();
-
     const lat = location.geometry.lat;
     const long = location.geometry.lng;
     const timeOffset = location.annotations.timezone.offset_sec;
+
+    const date = new Date();
+    const localOffset = new Date().getTimezoneOffset(); // in minutes
+    const localOffsetMillis = 60 * 1000 * localOffset;
+
+    const locationOffsetMillis = timeOffset * 1000;
+
+    const millisOffset = locationOffsetMillis + localOffsetMillis;
+
+    const locationTime = new Date(date.getTime() + (millisOffset));
+    const startDate = new Date(locationTime.getUTCFullYear(),
+    locationTime.getUTCMonth(),locationTime.getUTCDate(), 0, 0, 0, -localOffsetMillis);
+
+    const isoDateString = startDate.toISOString();
+
+    const localDateHeader = new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(locationTime);
+
+    setDateHeader(localDateHeader);
 
     try {
       const searchUrl = `${url}point?lat=${lat}&lng=${long}&start=${isoDateString}`
