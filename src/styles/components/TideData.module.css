@@ -1,0 +1,23 @@
+.container {
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.container tbody {
+  vertical-align: middle;
+}
+
+.container td {
+  padding: 0.25rem;
+  font-weight: 200;
+}
+
+.container td:first-child {
+  font-weight: 400;
+  text-transform: capitalize;
+}
