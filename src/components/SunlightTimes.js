@@ -25,11 +25,21 @@ export default function SunlightTimes({ location }) {
 
     const date = new Date();
     const startDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 0, 0, 0);
-    const isoDateString = startDate.toISOString();
+    // const isoDateString = startDate.toISOString();
 
     const lat = location.geometry.lat;
     const long = location.geometry.lng;
     const timeOffset = location.annotations.timezone.offset_sec;
+
+    const dateFromServer = new Date(); // California midnight
+    // const serverOffset = 480; // in minutes, from that API call
+    const locationOffsetMillis = timeOffset * 1000;
+    const localOffset = new Date().getTimezoneOffset(); // in minutes
+    const localOffsetMillis = 60 * 1000 * localOffset;
+    const localMidnight = new Date(dateFromServer.getTime() + locationOffsetMillis + localOffsetMillis);
+    console.log(localMidnight.toString());
+    console.log(localMidnight.toISOString());
+    const isoDateString = localMidnight.toISOString();
 
     try {
       const searchUrl = `${url}point?lat=${lat}&lng=${long}&start=${isoDateString}`
@@ -39,6 +49,7 @@ export default function SunlightTimes({ location }) {
         }
       });
       const jsonData = await response.json();
+      console.log(jsonData)
 
       let dawn = new Date(jsonData.data[0].civilDawn);
       let dusk = new Date(jsonData.data[0].civilDusk);
