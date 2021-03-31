@@ -13,8 +13,10 @@ function handleRenameChange(e) {
 
 function handleSubmit(e) {
   e.preventDefault();
-  const index = favorites.findIndex(fav => fav.annotations.geohash === favoriteClicked.annotations.geohash);
-  const result = favorites.filter(fav => fav.annotations.geohash !== favoriteClicked.annotations.geohash);
+  const index = favorites.findIndex(fav =>
+    fav.annotations.geohash === favoriteClicked.annotations.geohash);
+  const result = favorites.filter(fav =>
+    fav.annotations.geohash !== favoriteClicked.annotations.geohash);
   result.splice(index, 0, {...favoriteClicked, formatted: rename});
   setFavorites(result);
   closeFavModal();
@@ -38,7 +40,11 @@ function handleSubmit(e) {
           </div>
         </form>
 
-        <button type="button" className={styles.closeModal} onClick={closeFavModal}>
+        <button
+          type="button"
+          className={styles.closeModal}
+          onClick={closeFavModal}
+        >
           <img src={closeImg} alt="Close modal" />
         </button>
       </div>
