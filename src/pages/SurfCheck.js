@@ -13,7 +13,7 @@ export default function SurfCheck () {
   return (
     <>
     {invalidSpot ? (
-      <p>No surf data available for this spot.</p>
+      <p>No surf data available for this spot. Please try another search term.</p>
     ) :
     (loading ? <Loader /> :
     <>
