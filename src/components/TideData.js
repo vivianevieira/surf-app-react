@@ -43,7 +43,6 @@ export default function TideData({ location }) {
         }
       });
       const jsonData = await response.json();
-      console.log(jsonData);
 
       const tideDataArray = jsonData.data;
       setTideData(tideDataArray);
